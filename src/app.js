@@ -1,4 +1,7 @@
 import express from "express";
+import passport from "passport";
+import route from "./routes";
+import pass from "./config/passport/localStrategy";
 
 const app = express();
 
@@ -8,5 +11,8 @@ app.use(
     extended: false
   })
 );
+app.use(passport.initialize());
+pass(passport);
+app.use(route);
 
 export default app;
